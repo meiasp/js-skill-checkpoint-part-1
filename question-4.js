@@ -6,12 +6,12 @@ const inventory = [
 ];
 // if lowest quantity = true
 
-let currentLowest = inventory[0].quantity; //เริ่มเทียบจาก index 0
+let currentLowest = inventory[0]; //เริ่มเทียบจาก index 0
 
-for (i = 0; i < inventory.length; i++){
-  if (inventory[i].quantity < currentLowest){ //รอบแรก ถ้าตัวที่เทียบตอนนี้มากกว่าตัว index 0 ให้ update value นั้นแทน index 0
-    currentLowest = inventory[i].quantity;
+for (let i = 1; i < inventory.length; i++){ //index 0 เทียบ 1 เพราะไม่จำเป็นต้องเทียบกับตัวเอง
+  if (inventory[i].quantity < currentLowest.quantity){
+    currentLowest = inventory[i];
   }
 }
-console.log(`สินค้าที่มีจำนวนต่ำที่สุดในคลังสินค้าคือ Banana ซึ่งมี ${currentLowest} ชิ้น`);
+console.log(`สินค้าที่มีจำนวนต่ำที่สุดในคลังสินค้าคือ ${currentLowest.name} ซึ่งมี ${currentLowest.quantity} ชิ้น`);
 

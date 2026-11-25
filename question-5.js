@@ -26,23 +26,40 @@ with SALE20 = 68
 with SALE50 = 42.5
 */
 
-let productTShirt = products[0].price * products[0].quantity;
-let productJeans = products[1].price * products[1].quantity;
-let productShirt = products[2].price * products[2].quantity;
-let sumOrder = productTShirt+productJeans+productShirt;
+// let productTShirt = products[0].price * products[0].quantity;
+// let productJeans = products[1].price * products[1].quantity;
+// let productShirt = products[2].price * products[2].quantity;
+// let sumOrder = productTShirt+productJeans+productShirt;
+
+// function calculatedTotalPrice (products, promotionalCode){
+//   if (promotionalCode === "SALE50"){
+//     return sumOrder-(sumOrder*0.5);
+//   } else if (promotionalCode === "SALE20"){
+//     return sumOrder-(sumOrder*0.2);
+//   } else if (promotionalCode === ""){
+//     return sumOrder;
+//   }
+// }
 
 function calculatedTotalPrice (products, promotionalCode){
+  let sumOrder = 0;
+  for (let i = 0; i < products.length; i++){
+    sumOrder = sumOrder + (products[i].price * products[i].quantity);
+    /*
+    0+(10*2) = 20
+    20+(5*3) = 35
+    35+(10*5) = 85
+    */
+  }
   if (promotionalCode === "SALE50"){
-    return sumOrder-(sumOrder*0.5);
+    return sumOrder*0.5;
   } else if (promotionalCode === "SALE20"){
-    return sumOrder-(sumOrder*0.2);
-  } else if (promotionalCode === ""){
-    return sumOrder;
+    return sumOrder*0.8;
+  } else {
+    return sumOrder
   }
 }
 
 console.log(calculatedTotalPrice(products,""));
 console.log(calculatedTotalPrice(products,"SALE20"));
 console.log(calculatedTotalPrice(products,"SALE50"));
-
-console.log(calculatedTotalPrice(products,"discount 20%"));
